@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <stdlib.h>
 #include <time.h>
 #include "Mario.h"
 #include "Yoshi.h"
+#include "DonkeyKong.h"
 #include "Race.h"
 
 int main(int argc, char const *argv[])
@@ -33,10 +35,15 @@ int main(int argc, char const *argv[])
 
 	std::vector<Character*> racers;
 	racers.push_back(new Mario());
-	for (int i = 0; i < 7; ++i)
+	for (int i = 0; i < 2; ++i)
 	{
 		racers.push_back(new Yoshi(i+1));
 	}
+	racers.push_back(new DonkeyKong(std::string("Blue")));
+	racers.push_back(new DonkeyKong(std::string("Red")));
+	racers.push_back(new DonkeyKong(std::string("Green")));
+	racers.push_back(new DonkeyKong(std::string("Yellow")));
+	racers.push_back(new DonkeyKong(std::string("Cyan")));
 
 	std::cout << std::endl;
 	for (std::vector<Character*>::iterator it = racers.begin() ;

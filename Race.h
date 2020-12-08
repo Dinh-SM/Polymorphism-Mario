@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include "Character.h"
 
 class Race

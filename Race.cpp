@@ -96,8 +96,9 @@ std::vector<Character*> Race::racing(std::vector<Character*> racers)
 				}
 			}
 		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 	std::cout << "RACE END!" << std::endl << std::endl;
-
+	std::cin.get();
 	return ranking;
 };
