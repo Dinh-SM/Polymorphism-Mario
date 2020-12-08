@@ -1,5 +1,4 @@
 #include "Character.h"
-#include <iostream>
 
 Character::Character()
 {
@@ -9,7 +8,7 @@ Character::Character()
 
 Character::~Character()
 {
-	std::cout << "The character " << this << " has been destroyed." << std::endl;	
+	std::cout << "The character " << this << " has been destroyed." << std::endl;
 };
 
 void Character::Accelerate()
