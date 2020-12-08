@@ -2,7 +2,7 @@
 
 Mario::~Mario()
 {
-	std::cout << "Mario " << this << " has been destroyed." << std::endl;
+	std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
 };
 
 std::string Mario::WhatAmI() const

@@ -10,13 +10,18 @@ class Character
 		Character();
 		virtual ~Character();
 
-		void Accelerate();
+		virtual void Accelerate();
 		void Break();
 
 		virtual std::string WhatAmI() const = 0;
 		// At compile time, it now checks if there are child classes with this function defined and not virtual
 
 		inline float speed() const
+		{
+			return speed_;
+		};
+
+		inline float max_speed() const
 		{
 			return speed_;
 		};
