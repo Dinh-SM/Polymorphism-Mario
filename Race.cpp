@@ -1,5 +1,6 @@
 #include "Race.h"
 
+// Constructors
 Race::Race()
 {
 	length_ = 40;
@@ -12,11 +13,13 @@ Race::Race(int length, int laps)
 	laps_ = laps;
 };
 
+// Destructor
 Race::~Race()
 {
 	std::cout << "The race " << this << " has been destroyed." << std::endl;
 };
 
+// Methods
 int Race::length()
 {
 	return length_;

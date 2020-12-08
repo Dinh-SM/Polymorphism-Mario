@@ -22,8 +22,6 @@ int main(int argc, char const *argv[])
 
 	//mario->Accelerate();
 	//yoshi->Accelerate();
-	//mario->Accelerate();
-	//yoshi->Accelerate();
 	//mario->Break();
 	//yoshi->Break();
 

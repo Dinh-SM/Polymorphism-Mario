@@ -7,9 +7,13 @@
 class Character
 {
 	public:
+		// Constructor
 		Character();
+
+		// Destructor
 		virtual ~Character();
 
+		// Methods
 		virtual void Accelerate();
 		void Break();
 
@@ -27,6 +31,7 @@ class Character
 		};
 
 	protected:
+		// Attributes
 		float speed_;
 		float max_speed_;
 };

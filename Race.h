@@ -9,10 +9,14 @@
 class Race
 {
 	public:
+		// Constructors
 		Race();
 		Race(int length, int laps);
+
+		// Destructor
 		~Race();
 
+		// Methods
 		int length();
 		int laps();
 
@@ -22,6 +26,7 @@ class Race
 		std::vector<Character*> racing(std::vector<Character*> racers);
 
 	protected:
+		// Attributes
 		int length_;
 		int laps_;
 };

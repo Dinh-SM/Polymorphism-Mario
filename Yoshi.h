@@ -5,9 +5,13 @@
 class Yoshi: public Character
 {
 	public:
+		// Contructor
 		Yoshi(int crests);
+
+		// Destructor
 		~Yoshi();
 
+		// Methods
 		void Accelerate() override;
 		
 		inline int crests() const
@@ -18,5 +22,6 @@ class Yoshi: public Character
 		std::string WhatAmI() const override;
 
 	protected:
+		// Attribute
 		int crests_;
 };

@@ -1,16 +1,19 @@
 #include "DonkeyKong.h"
 
+// Constructor
 DonkeyKong::DonkeyKong(std::string color)
 {
 	max_speed_ = 15;
 	color_ = color;
 };
 
+// Destructor
 DonkeyKong::~DonkeyKong()
 {
 	std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
 };
 
+// Method
 std::string DonkeyKong::WhatAmI() const
 {
 	if (color_ == "Red")

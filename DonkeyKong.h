@@ -5,7 +5,10 @@
 class DonkeyKong: public Character
 {
 	public:
+		// Constructor
 		DonkeyKong(std::string color);
+		
+		// Destructor
 		~DonkeyKong();
 		
 		inline std::string color() const
@@ -16,5 +19,6 @@ class DonkeyKong: public Character
 		std::string WhatAmI() const override;
 
 	protected:
+		// Attributes
 		std::string color_;
 };
