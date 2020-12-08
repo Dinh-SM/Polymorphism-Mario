@@ -27,9 +27,3 @@ void Character::Break()
 		speed_ -= 1;
 	}
 };
-
-
-inline float Character::speed() const
-{
-	return speed_;
-};
