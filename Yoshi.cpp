@@ -12,7 +12,7 @@ Yoshi::~Yoshi()
 
 void Yoshi::Accelerate()
 {
-	if(speed_ < max_speed_)
+	if(speed_ < max_speed_ and 2 + speed_ < max_speed_)
 	{
 		speed_ += 2;
 	}
