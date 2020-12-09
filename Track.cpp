@@ -1,46 +1,46 @@
-#include "Race.h"
+#include "Track.h"
 
 // Constructors
-Race::Race()
+Track::Track()
 {
 	length_ = 40;
 	laps_ = 3;
 };
 
-Race::Race(int length, int laps)
+Track::Track(int length, int laps)
 {
 	length_ = length;
 	laps_ = laps;
 };
 
 // Destructor
-Race::~Race()
+Track::~Track()
 {
-	std::cout << "The race " << this << " has been destroyed." << std::endl;
+	std::cout << "The track " << this << " has been destroyed." << std::endl;
 };
 
 // Methods
-int Race::length()
+int Track::length()
 {
 	return length_;
 };
 
-int Race::laps()
+int Track::laps()
 {
 	return laps_;
 };
 
-void Race::setLength(int length)
+void Track::setLength(int length)
 {
 	length_ = length;
 };
 
-void Race::setLaps(int laps)
+void Track::setLaps(int laps)
 {
 	laps_ = laps;
 };
 
-std::vector<Character*> Race::racing(std::vector<Character*> racers)
+std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackNumber)
 {
 	std::vector<int> progression(racers.size(), 0);
 	std::vector<int> lapsProgression(racers.size(), 1);
@@ -49,18 +49,22 @@ std::vector<Character*> Race::racing(std::vector<Character*> racers)
 	int randomizer = 0;
 	int minProgression = 0;
 	int minLapsProgression = 0;
-	std::cout << std::endl << "RACE START!" << std::endl << std::endl;
+	std::cout << std::endl << "Track START!" << std::endl << std::endl;
 	while(minProgression < length_ or minLapsProgression < laps_)
 	{
 		minProgression = *min_element(progression.begin(), progression.end());
 		minLapsProgression = *min_element(lapsProgression.begin(), lapsProgression.end());
 
+		std::string display = "NORMAL RACE\n" ;
+		if (trackNumber > 0)
+			display = "CUP, TRACK #" + std::to_string(trackNumber) + "\n";
+
 		for (int i = 0; i < racers.size(); ++i)
 		{
-			std::cout << "  " << racers[i]->WhatAmI() << ", speed: " << racers[i]->speed() << " " << progressBar(progression[i])
-				<< " Lap " << lapsProgression[i] << "/" << laps_ << std::endl;
+			display += "  " + racers[i]->WhatAmI() + ", speed: " + std::to_string((int)(racers[i]->speed())) + " " + progressBar(progression[i])
+				+ " Lap " + std::to_string(lapsProgression[i]) + "/" + std::to_string(laps_) + "\n";
 		}
-		std::cout << std::endl;
+		std::cout << display << std::endl;
 
 		for (int i = 0; i < racers.size(); i++)
 		{
@@ -98,13 +102,16 @@ std::vector<Character*> Race::racing(std::vector<Character*> racers)
 			}
 		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(38));
+		std::this_thread::sleep_for(std::chrono::milliseconds(40));
 	}
-	std::cout << "RACE END!" << std::endl << std::endl;
+	std::string end = "";
+	if (trackNumber > 0)
+		end = "#" + std::to_string(trackNumber) + " ";
+	std::cout << "TRACK " + end + "END!" << std::endl << std::endl;
 	return ranking;
 };
 
-std::string Race::progressBar(int progression)
+std::string Track::progressBar(int progression)
 {
 	int barLength = 50;
 	float emptyLength = 0;

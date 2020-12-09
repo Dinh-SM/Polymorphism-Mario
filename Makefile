@@ -1,4 +1,4 @@
 main:
-	g++ -o main Character.cpp Mario.cpp Yoshi.cpp main.cpp Race.cpp DonkeyKong.cpp CustomCharacter.cpp
+	g++ -o main characters/Character.cpp characters/Mario.cpp characters/Yoshi.cpp main.cpp Track.cpp characters/DonkeyKong.cpp characters/CustomCharacter.cpp Cup.cpp
 	./main
 	rm ./main

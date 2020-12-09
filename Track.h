@@ -5,17 +5,17 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include "Character.h"
+#include "characters/Character.h"
 
-class Race
+class Track
 {
 	public:
 		// Constructors
-		Race();
-		Race(int length, int laps);
+		Track();
+		Track(int length, int laps);
 
 		// Destructor
-		~Race();
+		~Track();
 
 		// Methods
 		int length();
@@ -24,7 +24,7 @@ class Race
 		void setLength(int length);
 		void setLaps(int laps);
 
-		std::vector<Character*> racing(std::vector<Character*> racers);
+		std::vector<Character*> racing(std::vector<Character*> racers, int TrackNumber = 0);
 
 	protected:
 		// Attributes

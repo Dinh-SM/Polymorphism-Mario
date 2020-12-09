@@ -3,11 +3,11 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
-#include "Mario.h"
-#include "Yoshi.h"
-#include "DonkeyKong.h"
-#include "CustomCharacter.h"
-#include "Race.h"
+#include "characters/Mario.h"
+#include "characters/Yoshi.h"
+#include "characters/DonkeyKong.h"
+#include "characters/CustomCharacter.h"
+#include "Cup.h"
 
 int main(int argc, char const *argv[])
 {
@@ -45,19 +45,21 @@ int main(int argc, char const *argv[])
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
 	racers.push_back(new DonkeyKong(std::string("Magenta")));
 	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, -5));
-	racers.push_back(new CustomCharacter(std::string("Adrian"), 50, 5, -5));
-	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, -5));
-	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("4BIM"), 50, 5, -5));
 
-	std::cout << std::endl;
+	std::cout << "RACERS" << std::endl;
 	for (std::vector<Character*>::iterator it = racers.begin() ;
 		it != racers.end() ;
 		it++)
 	{
-		std::cout << "Racer " << (*it)->WhatAmI() << std::endl;
+		std::cout << "  - " << (*it)->WhatAmI() << std::endl;
 	}
+	std::cout << std::endl;
 
-	Race* race1 = new Race(500, 5);
+	std::cout << "Push a random key to proceed to a Normal Race." << std::endl; 
+	std::cin.get();
+
+	Track* race1 = new Track(500, 5);
 
 	std::vector<Character*> ranking = race1->racing(racers);
 	int i = 1;
@@ -71,11 +73,37 @@ int main(int argc, char const *argv[])
 	}
 	std::cout << std::endl;
 
+	std::cout << "Push a random key to proceed to the cup of 4 tracks." << std::endl; 
+	std::cin.get();
+
+	std::vector<Track*> tracks;
+	tracks.push_back(new Track(500,5));
+	tracks.push_back(new Track(400,4));
+	tracks.push_back(new Track(600,6));
+	Cup* cup = new Cup(tracks);
+	cup->addTrack(new Track(300,3));
+
+	std::vector<std::pair<Character*, int>> cupRanking = cup->raceCup(racers);
+	i = 1;
+	std::cout << "CUP RANKING:" << std::endl;
+	for (std::vector<std::pair<Character*, int>>::iterator it = cupRanking.begin() ;
+		it != cupRanking.end() ;
+		it++)
+	{
+		std::cout << "   #" << i << ": " << (*it).first->WhatAmI() << " with " << (*it).second << " points!" << std::endl;
+		i++;
+	}
+	std::cout << std::endl;
+
 	for (Character* racer : racers)
 	{
 		delete racer;
 	}
 	delete race1;
+	for (Track* track : tracks)
+	{
+		delete track;
+	}
 
 	return 0;
 }
