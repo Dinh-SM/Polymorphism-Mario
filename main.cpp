@@ -6,6 +6,7 @@
 #include "Mario.h"
 #include "Yoshi.h"
 #include "DonkeyKong.h"
+#include "CustomCharacter.h"
 #include "Race.h"
 
 int main(int argc, char const *argv[])
@@ -33,7 +34,7 @@ int main(int argc, char const *argv[])
 
 	std::vector<Character*> racers;
 	racers.push_back(new Mario());
-	for (int i = 0; i < 2; ++i)
+	for (int i = 0; i < 5; ++i)
 	{
 		racers.push_back(new Yoshi(i+1));
 	}
@@ -42,6 +43,11 @@ int main(int argc, char const *argv[])
 	racers.push_back(new DonkeyKong(std::string("Green")));
 	racers.push_back(new DonkeyKong(std::string("Yellow")));
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
+	racers.push_back(new DonkeyKong(std::string("Magenta")));
+	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Adrian"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
 
 	std::cout << std::endl;
 	for (std::vector<Character*>::iterator it = racers.begin() ;
@@ -51,7 +57,7 @@ int main(int argc, char const *argv[])
 		std::cout << "Racer " << (*it)->WhatAmI() << std::endl;
 	}
 
-	Race* race1 = new Race();
+	Race* race1 = new Race(500, 5);
 
 	std::vector<Character*> ranking = race1->racing(racers);
 	int i = 1;
@@ -65,11 +71,11 @@ int main(int argc, char const *argv[])
 	}
 	std::cout << std::endl;
 
-	//for (Character* racer : racers)
-	//{
-	//	delete racer;
-	//}
-	//delete race1;
+	for (Character* racer : racers)
+	{
+		delete racer;
+	}
+	delete race1;
 
 	return 0;
 }

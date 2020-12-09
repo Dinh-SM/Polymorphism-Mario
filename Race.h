@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 #include <stdlib.h>
 #include <algorithm>
 #include <iostream>
@@ -29,4 +30,7 @@ class Race
 		// Attributes
 		int length_;
 		int laps_;
+
+		// Private function
+		std::string progressBar(int progression);
 };

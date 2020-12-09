@@ -15,7 +15,7 @@ class Character
 
 		// Methods
 		virtual void Accelerate();
-		void Break();
+		virtual void Break();
 
 		virtual std::string WhatAmI() const = 0;
 		// At compile time, it now checks if there are child classes with this function defined and not virtual

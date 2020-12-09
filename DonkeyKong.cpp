@@ -32,6 +32,10 @@ std::string DonkeyKong::WhatAmI() const
 	{
 		return "\033[1;34m" + std::string(color_)+ std::string(" Donkey Kong") + "\033[0m";
 	}
+	if (color_ == "Magenta")
+	{
+		return "\033[1;35m" + std::string(color_)+ std::string(" Donkey Kong") + "\033[0m";
+	}
 	if (color_ == "Cyan")
 	{
 		return "\033[1;36m" + std::string(color_)+ std::string(" Donkey Kong") + "\033[0m";

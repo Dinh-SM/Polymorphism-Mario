@@ -55,12 +55,10 @@ std::vector<Character*> Race::racing(std::vector<Character*> racers)
 		minProgression = *min_element(progression.begin(), progression.end());
 		minLapsProgression = *min_element(lapsProgression.begin(), lapsProgression.end());
 
-		for (int i = 0; i < racers.size(); i++)
+		for (int i = 0; i < racers.size(); ++i)
 		{
-			if (std::find(ranking.begin(), ranking.end(), racers[i]) == ranking.end())
-			{
-				std::cout << "   " << racers[i]->WhatAmI() << " has speed: " << racers[i]->speed() << " and is at " << length_ - progression[i] << " from the finish line! (Lap " << lapsProgression[i] << "/" << laps_ << ")" << std::endl;
-			}
+			std::cout << "  " << racers[i]->WhatAmI() << ", speed: " << racers[i]->speed() << " " << progressBar(progression[i])
+				<< " Lap " << lapsProgression[i] << "/" << laps_ << std::endl;
 		}
 		std::cout << std::endl;
 
@@ -99,9 +97,40 @@ std::vector<Character*> Race::racing(std::vector<Character*> racers)
 				}
 			}
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(38));
 	}
 	std::cout << "RACE END!" << std::endl << std::endl;
-	std::cin.get();
 	return ranking;
+};
+
+std::string Race::progressBar(int progression)
+{
+	int barLength = 50;
+	float emptyLength = 0;
+	float filledLength = 0;
+	std::string bar = "[";
+	if (progression > length_)
+	{
+		emptyLength = barLength;
+		for (int i = 0; i < barLength; ++i)
+		{
+			bar += "■";
+		}
+	}
+	else
+	{
+		filledLength = (((float)progression/(float)length_))*(float)barLength;
+		emptyLength = barLength - filledLength;
+		for (int i = 0; i < filledLength; ++i)
+		{
+			bar += "■";
+		}
+		for (int i = 0; i < emptyLength; ++i)
+		{
+			bar += "-";
+		}
+	}
+	bar += "]";
+	return bar;
 };
