@@ -34,6 +34,13 @@ int main(int argc, char const *argv[])
 
 	std::vector<Character*> racers;
 	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
+	racers.push_back(new Mario());
 	for (int i = 0; i < 5; ++i)
 	{
 		racers.push_back(new Yoshi(i+1));
@@ -44,10 +51,11 @@ int main(int argc, char const *argv[])
 	racers.push_back(new DonkeyKong(std::string("Yellow")));
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
 	racers.push_back(new DonkeyKong(std::string("Magenta")));
+	racers.push_back(new DonkeyKong(std::string("???")));
 	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
 	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, -5));
 	racers.push_back(new CustomCharacter(std::string("Adrian"), 50, 5, -5));
-	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
 
 	std::cout << "RACERS" << std::endl;
 	for (std::vector<Character*>::iterator it = racers.begin() ;
@@ -61,7 +69,8 @@ int main(int argc, char const *argv[])
 	std::cout << "Push a random key to proceed to a Normal Race." << std::endl; 
 	std::cin.get();
 
-	Track* race1 = new Track(500, 5);
+	Track* race1 = new Track(1000, 2);
+	race1->setTrackName("DK Mountain");
 
 	std::vector<Character*> ranking = race1->racing(racers);
 	int i = 1;
@@ -79,11 +88,12 @@ int main(int argc, char const *argv[])
 	std::cin.get();
 
 	std::vector<Track*> tracks;
-	tracks.push_back(new Track(std::string("DK Mountain"), 500, 5));
-	tracks.push_back(new Track(std::string("Dino Dino Jungle"), 400, 4));
-	tracks.push_back(new Track(std::string("Bowser's Castle"), 300, 3));
+	tracks.push_back(new Track(500, 5, std::string("Wario Colloseum")));
+	tracks.push_back(new Track(400, 4, std::string("Dino Dino Jungle")));
+	tracks.push_back(new Track(300, 3,std::string("Bowser's Castle")));
 	Cup* cup = new Cup(tracks);
-	cup->addTrack(new Track(std::string("Rainbow Road"), 600,6));
+	cup->addTrack(new Track(600, 6, std::string("Rainbow Road")));
+	cup->setCupName(std::string("SPECIAL"));
 
 	std::vector<std::pair<Character*, int>> cupRanking = cup->raceCup(racers);
 	i = 1;

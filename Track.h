@@ -12,8 +12,7 @@ class Track
 	public:
 		// Constructors
 		Track();
-		Track(int length, int laps);
-		Track(std::string trackName, int length, int laps);
+		Track(int length, int laps, std::string trackName = std::string("NO_NAME"));
 
 		// Destructor
 		~Track();
@@ -27,7 +26,7 @@ class Track
 		void setLength(int length);
 		void setLaps(int laps);
 
-		std::vector<Character*> racing(std::vector<Character*> racers, int TrackNumber = 0);
+		std::vector<Character*> racing(std::vector<Character*> racers, int trackNumber = 0, std::string cupName = std::string("NO_NAME"));
 
 	protected:
 		// Attributes

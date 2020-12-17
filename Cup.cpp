@@ -1,10 +1,11 @@
 #include "Cup.h"
 
-// Constructor
-Cup::Cup(std::vector<Track*> tracks)
+// Constructors
+Cup::Cup(std::vector<Track*> tracks, std::string cupName)
 {
 	tracks_ = tracks;
 	scoreRanking_ = {};
+	cupName_ = cupName;
 };
 
 // Destructor
@@ -33,7 +34,7 @@ std::vector<std::pair<Character*, int>>  Cup::raceCup(std::vector<Character*> ra
 		it != tracks_.end() ;
 		it++)
 	{
-		std::vector<Character*> trackRanking = (*it)->racing(racers, i);
+		std::vector<Character*> trackRanking = (*it)->racing(racers, i, cupName_);
 		i++;
 		computeScores(trackRanking);
 	}
@@ -44,6 +45,11 @@ std::vector<std::pair<Character*, int>>  Cup::raceCup(std::vector<Character*> ra
 
 	return scoreRanking_;
 };
+
+void Cup::setCupName(std::string cupName)
+{
+	cupName_ = cupName;
+}
 
 void Cup::addTrack(Track* track)
 {

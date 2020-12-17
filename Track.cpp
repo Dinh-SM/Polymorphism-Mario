@@ -3,19 +3,12 @@
 // Constructors
 Track::Track()
 {
-	trackName_ = "NO_NAME";
 	length_ = 40;
 	laps_ = 3;
-};
-
-Track::Track(int length, int laps)
-{
 	trackName_ = "NO_NAME";
-	length_ = length;
-	laps_ = laps;
 };
 
-Track::Track(std::string trackName, int length, int laps)
+Track::Track(int length, int laps, std::string trackName)
 {
 	trackName_ = trackName;
 	length_ = length;
@@ -59,7 +52,7 @@ void Track::setLaps(int laps)
 	laps_ = laps;
 };
 
-std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackNumber)
+std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackNumber, std::string cupName)
 {
 	std::vector<int> progression(racers.size(), 0);
 	std::vector<int> lapsProgression(racers.size(), 1);
@@ -74,9 +67,15 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 		minProgression = *min_element(progression.begin(), progression.end());
 		minLapsProgression = *min_element(lapsProgression.begin(), lapsProgression.end());
 
-		std::string display = "NORMAL RACE\n" ;
+		std::string display = "NORMAL RACE" ;
 		if (trackNumber > 0)
-			display = "CUP, TRACK #" + std::to_string(trackNumber);
+		{
+			if(cupName != "NO_NAME")
+				display = cupName + " CUP, ";
+			else
+				display = "CUP, ";
+			display += "TRACK #" + std::to_string(trackNumber);
+		}
 		if(trackName_ != "NO_NAME")
 			display += ": " + trackName_;
 		display += "\n";
