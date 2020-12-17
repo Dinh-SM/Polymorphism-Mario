@@ -36,4 +36,5 @@ class Track
 
 		// Private function
 		std::string progressBar(int progression);
+		void doCountdown();
 };

@@ -61,6 +61,9 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 	int randomizer = 0;
 	int minProgression = 0;
 	int minLapsProgression = 0;
+
+	doCountdown();
+
 	std::cout << std::endl << "Track START!" << std::endl << std::endl;
 	while(minProgression < length_ or minLapsProgression < laps_)
 	{
@@ -71,19 +74,19 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 		if (trackNumber > 0)
 		{
 			if(cupName != "NO_NAME")
-				display = cupName + " CUP, ";
+				display = "\033[35m" + cupName + "\033[0m CUP, ";
 			else
 				display = "CUP, ";
 			display += "TRACK #" + std::to_string(trackNumber);
 		}
 		if(trackName_ != "NO_NAME")
-			display += ": " + trackName_;
+			display += ": \033[32m" + trackName_ + "\033[0m";
 		display += "\n";
 
 		for (int i = 0; i < racers.size(); ++i)
 		{
-			display += "  " + racers[i]->WhatAmI() + ", speed: " + std::to_string((int)(racers[i]->speed())) + " " + progressBar(progression[i])
-				+ " Lap " + std::to_string(lapsProgression[i]) + "/" + std::to_string(laps_) + "\n";
+			display += "  " + racers[i]->WhatAmI() + ",\033[36m speed: " + std::to_string((int)(racers[i]->speed())) + "\033[0m " + progressBar(progression[i])
+				+ "\033[34m Lap " + std::to_string(lapsProgression[i]) + "/" + std::to_string(laps_) + "\033[0m\n";
 		}
 		std::cout << display << std::endl;
 
@@ -161,4 +164,64 @@ std::string Track::progressBar(int progression)
 	}
 	bar += "]";
 	return bar;
+};
+
+void Track::doCountdown()
+{
+	std::string one = std::string(" .-----------------.\n")
+						+ std::string("| .---------------. |\n")
+						+ std::string("| |      __       | |\n")
+						+ std::string("| |     /  |      | |\n")
+						+ std::string("| |     `| |      | |\n")
+						+ std::string("| |      | |      | |\n")
+						+ std::string("| |     _| |_     | |\n")
+						+ std::string("| |    |_____|    | |\n")
+						+ std::string("| |               | |\n")
+						+ std::string("| \'---------------\' |\n")
+						+ std::string(" \'-----------------\'\n");
+
+	std::string two = std::string(" .-----------------.\n")
+						+ std::string("| .---------------. |\n")
+						+ std::string("| |     _____     | |\n")
+						+ std::string("| |    / ___ `.   | |\n")
+						+ std::string("| |   |_/___) |   | |\n")
+						+ std::string("| |    .\'____.\'   | |\n")
+						+ std::string("| |   / /____     | |\n")
+						+ std::string("| |   |_______|   | |\n")
+						+ std::string("| |               | |\n")
+						+ std::string("| \'---------------\' |\n")
+						+ std::string(" \'-----------------\'\n");
+
+	std::string three = std::string(" .-----------------.\n")
+						+ std::string("| .---------------. |\n")
+						+ std::string("| |    ______     | |\n")
+						+ std::string("| |   / ____ `.   | |\n")
+						+ std::string("| |   `\'  __) |   | |\n")
+						+ std::string("| |   _  |__ \'.   | |\n")
+						+ std::string("| |  | \\____) |   | |\n")
+						+ std::string("| |   \\______.\'   | |\n")
+						+ std::string("| |               | |\n")
+						+ std::string("| \'---------------\' |\n")
+						+ std::string(" \'-----------------\'\n");
+
+	std::string go = std::string(" .---------------------------------------.\n")
+						+ std::string("| .-------------------------------------. |\n")
+						+ std::string("| |      ______         ____       _    | |\n")
+						+ std::string("| |    .\' ___  |      .\'    `.    | |   | |\n")
+						+ std::string("| |   / .\'   \\_|     /  .--.  \\   | |   | |\n")
+						+ std::string("| |   | |    ____    | |    | |   | |   | |\n")
+						+ std::string("| |   \\ `.___]  _|   \\  `--\'  /   | |   | |\n")
+						+ std::string("| |    `._____.\'      `.____.\'    (_)   | |\n")
+						+ std::string("| |                                     | |\n")
+						+ std::string("| \'-------------------------------------\' |\n")
+						+ std::string(" \'---------------------------------------\'\n");
+
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\033[33m" << three <<  "\033[0m\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\033[33m" << two <<  "\033[0m\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(1250));
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\033[33m" << one <<  "\033[0m\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\033[33m" << go <<  "\033[0m\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(750));
 };
