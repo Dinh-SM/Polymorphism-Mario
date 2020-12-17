@@ -83,14 +83,14 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 			display += ": \033[32m" + trackName_ + "\033[0m";
 		display += "\n";
 
-		for (int i = 0; i < racers.size(); ++i)
+		for (long unsigned int i = 0; i < racers.size(); ++i)
 		{
 			display += "  " + racers[i]->WhatAmI() + ",\033[36m speed: " + std::to_string((int)(racers[i]->speed())) + "\033[0m " + progressBar(progression[i])
 				+ "\033[34m Lap " + std::to_string(lapsProgression[i]) + "/" + std::to_string(laps_) + "\033[0m\n";
 		}
 		std::cout << display << std::endl;
 
-		for (int i = 0; i < racers.size(); i++)
+		for (long unsigned int i = 0; i < racers.size(); i++)
 		{
 			if (std::find(ranking.begin(), ranking.end(), racers[i]) == ranking.end())
 			{
