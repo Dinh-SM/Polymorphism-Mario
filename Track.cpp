@@ -3,12 +3,21 @@
 // Constructors
 Track::Track()
 {
+	trackName_ = "NO_NAME";
 	length_ = 40;
 	laps_ = 3;
 };
 
 Track::Track(int length, int laps)
 {
+	trackName_ = "NO_NAME";
+	length_ = length;
+	laps_ = laps;
+};
+
+Track::Track(std::string trackName, int length, int laps)
+{
+	trackName_ = trackName;
 	length_ = length;
 	laps_ = laps;
 };
@@ -16,10 +25,15 @@ Track::Track(int length, int laps)
 // Destructor
 Track::~Track()
 {
-	std::cout << "The track " << this << " has been destroyed." << std::endl;
+	std::cout << "The track " << trackName_ << " " << this << " has been destroyed." << std::endl;
 };
 
 // Methods
+std::string Track::trackName()
+{
+	return trackName_;
+};
+
 int Track::length()
 {
 	return length_;
@@ -28,6 +42,11 @@ int Track::length()
 int Track::laps()
 {
 	return laps_;
+};
+
+void Track::setTrackName(std::string trackName)
+{
+	trackName_ = trackName;
 };
 
 void Track::setLength(int length)
@@ -57,7 +76,10 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 
 		std::string display = "NORMAL RACE\n" ;
 		if (trackNumber > 0)
-			display = "CUP, TRACK #" + std::to_string(trackNumber) + "\n";
+			display = "CUP, TRACK #" + std::to_string(trackNumber);
+		if(trackName_ != "NO_NAME")
+			display += ": " + trackName_;
+		display += "\n";
 
 		for (int i = 0; i < racers.size(); ++i)
 		{

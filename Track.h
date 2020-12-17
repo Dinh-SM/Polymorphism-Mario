@@ -13,14 +13,17 @@ class Track
 		// Constructors
 		Track();
 		Track(int length, int laps);
+		Track(std::string trackName, int length, int laps);
 
 		// Destructor
 		~Track();
 
 		// Methods
+		std::string trackName();
 		int length();
 		int laps();
 
+		void setTrackName(std::string trackName);
 		void setLength(int length);
 		void setLaps(int laps);
 
@@ -28,6 +31,7 @@ class Track
 
 	protected:
 		// Attributes
+		std::string trackName_;
 		int length_;
 		int laps_;
 

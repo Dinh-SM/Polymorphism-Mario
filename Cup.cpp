@@ -10,6 +10,10 @@ Cup::Cup(std::vector<Track*> tracks)
 // Destructor
 Cup::~Cup()
 {
+	for (Track* track : tracks_)
+	{
+		delete track;
+	}
 	std::cout << "The cup " << this << " has been destroyed." << std::endl;
 };
 

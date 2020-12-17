@@ -45,7 +45,9 @@ int main(int argc, char const *argv[])
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
 	racers.push_back(new DonkeyKong(std::string("Magenta")));
 	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, -5));
-	racers.push_back(new CustomCharacter(std::string("4BIM"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Adrian"), 50, 5, -5));
+	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
 
 	std::cout << "RACERS" << std::endl;
 	for (std::vector<Character*>::iterator it = racers.begin() ;
@@ -77,11 +79,11 @@ int main(int argc, char const *argv[])
 	std::cin.get();
 
 	std::vector<Track*> tracks;
-	tracks.push_back(new Track(500,5));
-	tracks.push_back(new Track(400,4));
-	tracks.push_back(new Track(600,6));
+	tracks.push_back(new Track(std::string("DK Mountain"), 500, 5));
+	tracks.push_back(new Track(std::string("Dino Dino Jungle"), 400, 4));
+	tracks.push_back(new Track(std::string("Bowser's Castle"), 300, 3));
 	Cup* cup = new Cup(tracks);
-	cup->addTrack(new Track(300,3));
+	cup->addTrack(new Track(std::string("Rainbow Road"), 600,6));
 
 	std::vector<std::pair<Character*, int>> cupRanking = cup->raceCup(racers);
 	i = 1;
@@ -100,10 +102,7 @@ int main(int argc, char const *argv[])
 		delete racer;
 	}
 	delete race1;
-	for (Track* track : tracks)
-	{
-		delete track;
-	}
+	delete cup;
 
 	return 0;
 }
