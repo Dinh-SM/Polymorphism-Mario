@@ -52,7 +52,7 @@ int main(int argc, char const *argv[])
 	racers.push_back(new DonkeyKong(std::string("Yellow")));
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
 	racers.push_back(new DonkeyKong(std::string("Magenta")));
-	racers.push_back(new DonkeyKong(std::string("???")));
+	racers.push_back(new DonkeyKong(std::string("?")));
 	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, -5));
 	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, -5));
 	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, -5));

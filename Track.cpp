@@ -85,8 +85,9 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int trackN
 
 		for (long unsigned int i = 0; i < racers.size(); ++i)
 		{
-			display += "  " + racers[i]->WhatAmI() + ",\033[36m speed: " + std::to_string((int)(racers[i]->speed())) + "\033[0m " + progressBar(progression[i])
-				+ "\033[34m Lap " + std::to_string(lapsProgression[i]) + "/" + std::to_string(laps_) + "\033[0m\n";
+			display += "  " + racers[i]->WhatAmI() + ",\033[36m speed: " + std::to_string((int)(racers[i]->speed()))
+					+ "     \t\033[0m " + progressBar(progression[i]) + "\033[34m Lap " + std::to_string(lapsProgression[i])
+					+ "/" + std::to_string(laps_) + "\033[0m\n";
 		}
 		std::cout << display << std::endl;
 
@@ -143,7 +144,6 @@ std::string Track::progressBar(int progression)
 	std::string bar = "[";
 	if (progression > length_)
 	{
-		emptyLength = barLength;
 		for (int i = 0; i < barLength; ++i)
 		{
 			bar += "■";
@@ -151,7 +151,7 @@ std::string Track::progressBar(int progression)
 	}
 	else
 	{
-		filledLength = (((float)progression/(float)length_))*(float)barLength;
+		filledLength = round((((float)progression/(float)length_))*(float)barLength);
 		emptyLength = barLength - filledLength;
 		for (int i = 0; i < filledLength; ++i)
 		{
@@ -162,59 +162,62 @@ std::string Track::progressBar(int progression)
 			bar += "-";
 		}
 	}
+
+	
+
 	bar += "]";
 	return bar;
 };
 
 void Track::doCountdown()
 {
-	std::string one = std::string(" .-----------------.\n")
-						+ std::string("| .---------------. |\n")
-						+ std::string("| |      __       | |\n")
-						+ std::string("| |     /  |      | |\n")
-						+ std::string("| |     `| |      | |\n")
-						+ std::string("| |      | |      | |\n")
-						+ std::string("| |     _| |_     | |\n")
-						+ std::string("| |    |_____|    | |\n")
-						+ std::string("| |               | |\n")
-						+ std::string("| \'---------------\' |\n")
-						+ std::string(" \'-----------------\'\n");
+	std::string one = std::string("\t\t\t\t\t .-----------------.\n")
+						+ std::string("\t\t\t\t\t| .---------------. |\n")
+						+ std::string("\t\t\t\t\t| |      __       | |\n")
+						+ std::string("\t\t\t\t\t| |     /  |      | |\n")
+						+ std::string("\t\t\t\t\t| |     `| |      | |\n")
+						+ std::string("\t\t\t\t\t| |      | |      | |\n")
+						+ std::string("\t\t\t\t\t| |     _| |_     | |\n")
+						+ std::string("\t\t\t\t\t| |    |_____|    | |\n")
+						+ std::string("\t\t\t\t\t| |               | |\n")
+						+ std::string("\t\t\t\t\t| \'---------------\' |\n")
+						+ std::string("\t\t\t\t\t \'-----------------\'\n");
 
-	std::string two = std::string(" .-----------------.\n")
-						+ std::string("| .---------------. |\n")
-						+ std::string("| |     _____     | |\n")
-						+ std::string("| |    / ___ `.   | |\n")
-						+ std::string("| |   |_/___) |   | |\n")
-						+ std::string("| |    .\'____.\'   | |\n")
-						+ std::string("| |   / /____     | |\n")
-						+ std::string("| |   |_______|   | |\n")
-						+ std::string("| |               | |\n")
-						+ std::string("| \'---------------\' |\n")
-						+ std::string(" \'-----------------\'\n");
+	std::string two = std::string("\t\t\t\t\t .-----------------.\n")
+						+ std::string("\t\t\t\t\t| .---------------. |\n")
+						+ std::string("\t\t\t\t\t| |     _____     | |\n")
+						+ std::string("\t\t\t\t\t| |    / ___ `.   | |\n")
+						+ std::string("\t\t\t\t\t| |   |_/___) |   | |\n")
+						+ std::string("\t\t\t\t\t| |    .\'____.\'   | |\n")
+						+ std::string("\t\t\t\t\t| |   / /____     | |\n")
+						+ std::string("\t\t\t\t\t| |   |_______|   | |\n")
+						+ std::string("\t\t\t\t\t| |               | |\n")
+						+ std::string("\t\t\t\t\t| \'---------------\' |\n")
+						+ std::string("\t\t\t\t\t \'-----------------\'\n");
 
-	std::string three = std::string(" .-----------------.\n")
-						+ std::string("| .---------------. |\n")
-						+ std::string("| |    ______     | |\n")
-						+ std::string("| |   / ____ `.   | |\n")
-						+ std::string("| |   `\'  __) |   | |\n")
-						+ std::string("| |   _  |__ \'.   | |\n")
-						+ std::string("| |  | \\____) |   | |\n")
-						+ std::string("| |   \\______.\'   | |\n")
-						+ std::string("| |               | |\n")
-						+ std::string("| \'---------------\' |\n")
-						+ std::string(" \'-----------------\'\n");
+	std::string three = std::string("\t\t\t\t\t .-----------------.\n")
+						+ std::string("\t\t\t\t\t| .---------------. |\n")
+						+ std::string("\t\t\t\t\t| |    ______     | |\n")
+						+ std::string("\t\t\t\t\t| |   / ____ `.   | |\n")
+						+ std::string("\t\t\t\t\t| |   `\'  __) |   | |\n")
+						+ std::string("\t\t\t\t\t| |   _  |__ \'.   | |\n")
+						+ std::string("\t\t\t\t\t| |  | \\____) |   | |\n")
+						+ std::string("\t\t\t\t\t| |   \\______.\'   | |\n")
+						+ std::string("\t\t\t\t\t| |               | |\n")
+						+ std::string("\t\t\t\t\t| \'---------------\' |\n")
+						+ std::string("\t\t\t\t\t \'-----------------\'\n");
 
-	std::string go = std::string(" .---------------------------------------.\n")
-						+ std::string("| .-------------------------------------. |\n")
-						+ std::string("| |      ______         ____       _    | |\n")
-						+ std::string("| |    .\' ___  |      .\'    `.    | |   | |\n")
-						+ std::string("| |   / .\'   \\_|     /  .--.  \\   | |   | |\n")
-						+ std::string("| |   | |    ____    | |    | |   | |   | |\n")
-						+ std::string("| |   \\ `.___]  _|   \\  `--\'  /   | |   | |\n")
-						+ std::string("| |    `._____.\'      `.____.\'    (_)   | |\n")
-						+ std::string("| |                                     | |\n")
-						+ std::string("| \'-------------------------------------\' |\n")
-						+ std::string(" \'---------------------------------------\'\n");
+	std::string go = std::string("\t\t\t\t .---------------------------------------.\n")
+						+ std::string("\t\t\t\t| .-------------------------------------. |\n")
+						+ std::string("\t\t\t\t| |      ______         ____       _    | |\n")
+						+ std::string("\t\t\t\t| |    .\' ___  |      .\'    `.    | |   | |\n")
+						+ std::string("\t\t\t\t| |   / .\'   \\_|     /  .--.  \\   | |   | |\n")
+						+ std::string("\t\t\t\t| |   | |    ____    | |    | |   | |   | |\n")
+						+ std::string("\t\t\t\t| |   \\ `.___]  _|   \\  `--\'  /   | |   | |\n")
+						+ std::string("\t\t\t\t| |    `._____.\'      `.____.\'    (_)   | |\n")
+						+ std::string("\t\t\t\t| |                                     | |\n")
+						+ std::string("\t\t\t\t| \'-------------------------------------\' |\n")
+						+ std::string("\t\t\t\t \'---------------------------------------\'\n");
 
 	std::cout << "\n\n\n\n\n\n\n\n\n\n\033[33m" << three <<  "\033[0m\n\n\n\n\n\n\n\n\n\n" << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds(1500));
