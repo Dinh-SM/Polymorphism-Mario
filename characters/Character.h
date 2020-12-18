@@ -25,9 +25,9 @@ class Character
 			return speed_;
 		};
 
-		inline float maxSpeed() const
+		inline float max_speed() const
 		{
-			return speed_;
+			return max_speed_;
 		};
 
 	protected:

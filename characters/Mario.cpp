@@ -11,7 +11,7 @@ Mario::Mario()
 // Destructor
 Mario::~Mario()
 {
-	std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
+	//std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
 };
 
 // Method

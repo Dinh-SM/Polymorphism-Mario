@@ -1,21 +1,19 @@
 #include "Cup.h"
 
 // Constructors
-Cup::Cup(std::vector<Track*> tracks, std::string cupName)
+Cup::Cup(std::vector<Track*> tracks, std::string cup_name)
 {
 	tracks_ = tracks;
-	scoreRanking_ = {};
-	cupName_ = cupName;
+	score_ranking_ = {};
+	cup_name_ = cup_name;
 };
 
 // Destructor
 Cup::~Cup()
 {
 	for (Track* track : tracks_)
-	{
 		delete track;
-	}
-	std::cout << "The cup " << this << " has been destroyed." << std::endl;
+	//std::cout << "The cup " << this << " has been destroyed." << std::endl;
 };
 
 // Methods
@@ -25,58 +23,58 @@ std::vector<std::pair<Character*, int>>  Cup::raceCup(std::vector<Character*> ra
 		it != racers.end() ;
 		it++)
 	{
-		std::pair<Character*, int> racerScore((*it), 0);
-		scoreRanking_.push_back(racerScore);
+		std::pair<Character*, int> racer_score((*it), 0);
+		score_ranking_.push_back(racer_score);
 	}
 
-	int i = 1;
+	int race_number = 1;
 	for (std::vector<Track*>::iterator it = tracks_.begin() ;
 		it != tracks_.end() ;
 		it++)
 	{
-		std::vector<Character*> trackRanking = (*it)->racing(racers, i, cupName_);
-		i++;
-		computeScores(trackRanking);
+		std::vector<Character*> track_ranking = (*it)->racing(racers, race_number, cup_name_);
+		race_number++;
+		compute_scores(track_ranking);
 	}
 
-	std::sort(scoreRanking_.begin(), scoreRanking_.end(), [](auto &left, auto &right) {
+	std::sort(score_ranking_.begin(), score_ranking_.end(), [](auto &left, auto &right) {
     	return left.second > right.second;
 	});
 
-	return scoreRanking_;
+	return score_ranking_;
 };
 
-void Cup::setCupName(std::string cupName)
+void Cup::set_cup_name(std::string cup_name)
 {
-	cupName_ = cupName;
+	cup_name_ = cup_name;
 }
 
-void Cup::addTrack(Track* track)
+void Cup::add_track(Track* track)
 {
 	tracks_.push_back(track);
 };
 
 // Protected Method
-int Cup::getRacerIndex(Character* racer)
+int Cup::get_racer_index(Character* racer)
 {
-	int i = 0;
-    for (std::pair<Character*, int> racerScore : scoreRanking_)
+	int index = 0;
+    for (std::pair<Character*, int> racer_score : score_ranking_)
     {
-    	if (racerScore.first == racer)
+    	if (racer_score.first == racer)
     		break;
     	else
-    		i++;
+    		index++;
     }
-    return i;
+    return index;
 };
 
-void Cup::computeScores(std::vector<Character*> trackRanking)
+void Cup::compute_scores(std::vector<Character*> track_ranking)
 {
-	int max_track_score = trackRanking.size();
-	int i = 0;
-	for (Character* racer : trackRanking)
+	int max_track_score = track_ranking.size();
+	int rank = 0;
+	for (Character* racer : track_ranking)
 	{
-		scoreRanking_[getRacerIndex(racer)].second += max_track_score - i;
-		i++;
+		score_ranking_[get_racer_index(racer)].second += max_track_score - rank;
+		rank++;
 	}
 };

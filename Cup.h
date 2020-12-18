@@ -7,25 +7,35 @@ class Cup
 {
 	public:
 		// Constructors
-		Cup(std::vector<Track*> tracks, std::string cupName = std::string("NO_NAME"));
+		Cup(std::vector<Track*> tracks, std::string cup_name = std::string("NO_NAME"));
 		
 		// Destructor
 		~Cup();
 
 		// Methods
+		inline std::string cup_name() const
+		{
+			return cup_name_;
+		};
+
+		inline std::vector<Track*> tracks() const
+		{
+			return tracks_;
+		};
+
 		std::vector<std::pair<Character*, int>> raceCup(std::vector<Character*> racers);
 
-		void setCupName(std::string cupName);
-		void addTrack(Track* track);
+		void set_cup_name(std::string cup_name);
+		void add_track(Track* track);
 	
 	protected:
 		// Attributes
-		std::string cupName_;
+		std::string cup_name_;
 		std::vector<Track*> tracks_;
-		std::vector<std::pair<Character*, int>> scoreRanking_;
+		std::vector<std::pair<Character*, int>> score_ranking_;
 
 		// Protected Method
-		void computeScores(std::vector<Character*> ranking);
-		int getRacerIndex(Character* racer);
-		static bool compareScores(const std::pair<Character*, int> &a, const std::pair<Character*, int> &b);
+		void compute_scores(std::vector<Character*> ranking);
+		int get_racer_index(Character* racer);
+		static bool compare_scores(const std::pair<Character*, int> &a, const std::pair<Character*, int> &b);
 };

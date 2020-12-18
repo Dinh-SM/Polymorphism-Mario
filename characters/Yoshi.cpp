@@ -9,16 +9,16 @@ Yoshi::Yoshi(int crests)
 // Destructor
 Yoshi::~Yoshi()
 {
-	std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
+	//std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
 };
 
 // Methods
 void Yoshi::Accelerate()
 {
-	if(speed_ < max_speed_ and 2 + speed_ <= max_speed_)
-	{
+	if (2 + speed_ <= max_speed_)
 		speed_ += 2;
-	}
+	else
+		speed_ = max_speed_;
 };
 
 std::string Yoshi::WhatAmI() const

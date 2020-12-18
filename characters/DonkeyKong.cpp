@@ -10,7 +10,7 @@ DonkeyKong::DonkeyKong(std::string color)
 // Destructor
 DonkeyKong::~DonkeyKong()
 {
-	std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
+	//std::cout << this->WhatAmI() << " " << this << " has been destroyed." << std::endl;
 };
 
 // Method
