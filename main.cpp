@@ -37,10 +37,7 @@ int main()
 	racers.push_back(new DonkeyKong(std::string("Cyan")));
 	racers.push_back(new DonkeyKong(std::string("Magenta")));
 	racers.push_back(new DonkeyKong(std::string("?")));
-	racers.push_back(new CustomCharacter(std::string("Sodinhel"), 50, 5, 0));
-	racers.push_back(new CustomCharacter(std::string("Julie"), 50, 5, 0));
-	racers.push_back(new CustomCharacter(std::string("Rafik"), 50, 5, 0));
-	racers.push_back(new CustomCharacter(std::string("Adrian"), 50, 5, 0));
+	racers.push_back(new CustomCharacter(std::string("Link"), 13, 1.1, 0.7));
 
 
 	// Display Racers
