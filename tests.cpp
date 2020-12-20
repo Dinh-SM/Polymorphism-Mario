@@ -53,6 +53,9 @@ TEST(CharacterTests, CharacterConstructors)
 	ASSERT_FLOAT_EQ(customCharacterTest->break_value(), 0.9);
 
 	delete marioTest;
+	delete luigiTest;
+	delete warioTest;
+	delete waluigiTest;
 	delete yoshiTest;
 	delete donkeyKongTest;
 	delete customCharacterTest;
@@ -153,6 +156,44 @@ TEST(CharacterTests, CharacterBreak)
 		customCharacterTest->Break();
 	}
 	ASSERT_FLOAT_EQ(customCharacterTest->speed(), 0);
+
+	delete marioTest;
+	delete yoshiTest;
+	delete donkeyKongTest;
+	delete customCharacterTest;
+}
+
+TEST(CharacterTests, CharacterLoop)
+{
+	Mario* marioTest = new Mario();
+	Yoshi* yoshiTest = new Yoshi(1);
+	DonkeyKong* donkeyKongTest = new DonkeyKong(std::string("Blue"));
+	CustomCharacter* customCharacterTest = new CustomCharacter(std::string("Test"), 12, 1.1, 0.9);
+
+	std::vector<Character*> racers;
+	racers.push_back(marioTest);
+	racers.push_back(yoshiTest);
+	racers.push_back(donkeyKongTest);
+	racers.push_back(customCharacterTest);
+
+	// Iterators for loop
+	for (std::vector<Character*>::iterator it = racers.begin() ;
+		it != racers.end() ;
+		it++)
+	{
+		(*it)->Accelerate();
+		(*it)->Accelerate();
+		(*it)->Accelerate();
+	}
+
+	// Range-based for loop
+	for (Character* racer : racers)
+		racer->Break();
+
+	ASSERT_FLOAT_EQ(marioTest->speed(), 2);
+	ASSERT_FLOAT_EQ(yoshiTest->speed(), 5);
+	ASSERT_FLOAT_EQ(donkeyKongTest->speed(), 2);
+	ASSERT_FLOAT_EQ(customCharacterTest->speed(), 2.4);
 
 	delete marioTest;
 	delete yoshiTest;
