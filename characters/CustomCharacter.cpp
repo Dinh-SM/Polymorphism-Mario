@@ -11,15 +11,15 @@ CustomCharacter::CustomCharacter(std::string name)
 CustomCharacter::CustomCharacter(std::string name, float max_speed, float acceleration, float break_value)
 {
 	name_ = name;
-	if (max_speed <= 18 and max_speed > 0)
+	if (max_speed <= 18 && max_speed > 0)
 		max_speed_ = max_speed;
 	else
 		max_speed_ = 8;
-	if (acceleration <= 3 and acceleration > 0)
+	if (acceleration <= 3 && acceleration > 0)
 		acceleration_ = acceleration;
 	else
 		acceleration_ = 1;
-	if (break_value > 0 and break_value <= 3)
+	if (break_value > 0 && break_value <= 3)
 		break_value_ = break_value;
 	else
 		break_value_ = 1;
@@ -56,19 +56,19 @@ void CustomCharacter::set_name(std::string name)
 
 void CustomCharacter::set_max_speed(float max_speed)
 {
-	if (max_speed <= 18 and max_speed > 0)
+	if (max_speed <= 18 && max_speed > 0)
 		max_speed_ = max_speed;
 };
 
 void CustomCharacter::set_acceleration(float acceleration)
 {
-	if (acceleration <= 3 and acceleration > 0)
+	if (acceleration <= 3 && acceleration > 0)
 		acceleration_ = acceleration;
 };
 
 void CustomCharacter::set_break_value(float break_value)
 {
-	if (break_value > 0 and break_value <= 3)
+	if (break_value > 0 && break_value <= 3)
 		break_value_ = break_value;
 };
 

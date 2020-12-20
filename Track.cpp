@@ -51,7 +51,7 @@ std::vector<Character*> Track::racing(std::vector<Character*> racers, int track_
 	do_countdown();
 
 	std::cout << std::endl << "Track START!" << std::endl << std::endl;
-	while (min_progression < length_ or min_laps_progression < laps_)
+	while (min_progression < length_ || min_laps_progression < laps_)
 	{
 		min_progression = *min_element(progression.begin(), progression.end());
 		min_laps_progression = *min_element(laps_progression.begin(), laps_progression.end());
