@@ -1,7 +1,6 @@
 # Exercise to practice the concept of polymorphism in C++
 
-Polymorphism: hands-on
-======================
+## Polymorphism: hands-on
 
 ### 1) Implement a class ``Character`` containing the following:
 * Data member: ``float speed_``
