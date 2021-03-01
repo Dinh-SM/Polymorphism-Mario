@@ -46,5 +46,5 @@ Check that you have no memory leaks
 
 ## Execution
 
-Execute gtests: make
-Execute main: make runmain
+* Execute gtests: make
+* Execute main: make runmain
