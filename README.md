@@ -1,7 +1,5 @@
 # Exercise to practice the concept of polymorphism in C++
 
-## TO-DO
-
 Polymorphism: hands-on
 ======================
 
